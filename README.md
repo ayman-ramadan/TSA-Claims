@@ -92,11 +92,5 @@ This project focuses on the **data preparation and analysis of TSA (Transportati
 - Revealed patterns to improve TSA claims processing and oversight
 - Delivered automated reporting infrastructure adaptable to any U.S. state
 
----
 
-## Author
-
-This project was developed as part of a data analysis training using **SAS**, with a focus on end-to-end data wrangling, validation, and reporting.
-
-For questions or collaboration opportunities, feel free to reach out via LinkedIn.
 
