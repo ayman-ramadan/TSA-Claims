@@ -1,96 +1,68 @@
-# TSA Claims Data Analysis (2002–2017)
+# ✈️ TSA Claims Data Analysis using SAS
 
-## Overview
-
-This project focuses on the **data preparation and analysis of TSA (Transportation Security Administration) claims** filed between 2002 and 2017. The dataset includes claims related to lost or damaged property and personal injury during airport security screenings. The goal was to clean and standardize the dataset, resolve inconsistencies, and generate a dynamic, state-specific statistical report to support data-driven decision-making and operational transparency.
+This project analyzes claims submitted to the **Transportation Security Administration (TSA)** by passengers at U.S. airports. Using **SAS**, I performed data cleaning, preparation, and exploratory analysis to identify trends in claim types, statuses, processing time, and airport performance.
 
 ---
 
-## Objectives
+## 🧠 Objective
 
-- **Data Cleaning and Transformation**
-  - Remove duplicates and irrelevant fields
-  - Address missing values systematically
-  - Correct inconsistent formatting in key columns (e.g., `Claim_Type`, `StateName`)
-
-- **Data Standardization**
-  - Standardize date formats (e.g., `01JAN2000`)
-  - Format currency values (e.g., `$100.00`)
-  - Normalize column names and categorical values for consistency
-
-- **Data Quality Assurance**
-  - Resolve date-related issues
-  - Validate categorical fields
-  - Drop redundant or uninformative columns (`County`, `City`)
-
-- **Dynamic Reporting**
-  - Generate a PDF summary report
-  - Focus the analysis on a user-defined U.S. state
-  - Visualize yearly trends, claim types, and financial impact
+To perform comprehensive **data cleaning, preparation, and analysis** on TSA claims data to uncover insights and answer key business questions, including:
+- What types of claims are most common?
+- Which airports have the highest volume of claims?
+- How long does it take to process claims?
+- What is the most frequent claim status?
 
 ---
 
-## Tools & Technologies
+## 📁 Data Source
 
-- **SAS (Statistical Analysis System)**
-  - `PROC IMPORT`, `PROC SORT`, `PROC FREQ`, `DATA` step for data preparation
-  - `ODS PDF` for exporting formatted, dynamic reports
-
----
-
-## Data Preparation Process
-
-1. **Data Import**
-   - Read raw data from `TSAClaims2002_2017.csv`
-
-2. **Initial Cleaning**
-   - Remove exact duplicates
-   - Handle missing entries in essential fields
-   - Standardize values in categorical columns
-
-3. **Data Formatting**
-   - Reformat date fields using `INPUT` and `PUT` functions
-   - Standardize case formatting and remove leading/trailing spaces
-   - Label columns for enhanced readability
-
-4. **Data Validation**
-   - Validate date ranges and detect anomalies
-   - Apply frequency analysis on key dimensions (e.g., `Claim_Type`, `Item_Category`)
+- **TSA Claims Dataset (Publicly Available)**
+  - Fields include: `Claim Number`, `Claim Type`, `Incident Date`, `Date Received`, `Airport Code`, `Claim Site`, `Disposition`, `Close Amount`, and others.
 
 ---
 
-## Analysis & Reporting
+## 🛠️ Tools & Technologies
 
-- **Statistical Summary**
-  - Claim distribution over time
-  - Claims per year and per state
-  - Frequency of claim types and item categories
-
-- **Dashboard Highlights**
-  - Time series trends
-  - Outliers and anomalies in claim dates
-  - State-wise breakdown of claims and reimbursement totals
-
-- **Final Report**
-  - Generated as a PDF via `ODS PDF`
-  - Includes visual summaries and frequency tables
-  - Tailored by default to a specific user-defined state
+- **SAS Studio** / **SAS Enterprise Guide**
+- **PROC SQL**, **PROC MEANS**, **PROC FREQ**, **PROC SGPLOT**
+- **DATA Step Programming**
+- Formats, Labels, Titles for enhanced reporting and visualization
 
 ---
 
-## Deliverables
+## 🔄 Workflow Overview
 
-- Cleaned and standardized dataset (ready for downstream analysis)
-- Statistical report (PDF) summarizing findings
-- Reproducible SAS script for data preparation and reporting
+### 1️⃣ Data Cleaning & Preparation
+- Removed null or invalid `Claim Type`, `Disposition`, and `Close Amount` values.
+- Converted character-type dates into `SAS Date` format for analysis.
+- Created new calculated columns:
+  - `Days_to_Process = Date_Closed - Date_Received`
+  - `Year`, `Month` extracted from `Incident Date`
+- Filtered duplicates and invalid airport codes.
+
+### 2️⃣ Exploratory Data Analysis
+- Frequency distribution of **Claim Types**, **Disposition**, and **Claim Sites**.
+- Identified top 10 airports with the highest number of claims.
+- Calculated mean/median **Close Amounts** and **Days to Process**.
+- Analyzed claim trends over time (monthly/yearly).
+
+### 3️⃣ Visualizations & Reporting
+- **Bar Charts**: Most common claim types and statuses.
+- **Pie Charts**: Proportion of claim outcomes.
+- **Line Graphs**: Year-over-year trends in claim volume.
+- **Histograms**: Distribution of processing times and claim values.
+- Exported summary tables to Excel and visual reports to PDF.
+
+## Dashboard
+![image](https://github.com/user-attachments/assets/1ba6e934-b025-4732-94fc-d96285c2bafe)
 
 ---
 
-## Impact
+## 📊 Key Insights
 
-- Ensured high-quality, analysis-ready data
-- Revealed patterns to improve TSA claims processing and oversight
-- Delivered automated reporting infrastructure adaptable to any U.S. state
-
+- Over **60% of claims were denied or settled** with minimal payout.
+- Most claims originated from **10 high-traffic airports**.
+- Property loss and damage made up the majority of submissions.
+- Average claim processing time was **45+ days**, with high variance by disposition.
 
 
